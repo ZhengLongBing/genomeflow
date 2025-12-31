@@ -6,7 +6,7 @@ RNASequence 类的单元测试。
 
 import pytest
 
-from genomeflow.rna import RNASequence, TranslationResult, CODON_TABLE
+from genomeflow.rna import CODON_TABLE, RNASequence
 from genomeflow.sequence import InvalidSequenceError
 
 

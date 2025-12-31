@@ -13,12 +13,12 @@ from typing import TYPE_CHECKING
 import matplotlib.pyplot as plt
 
 if TYPE_CHECKING:
-    from genomeflow.sequence import DNASequence
     from genomeflow.io import FastaRecord
+    from genomeflow.sequence import DNASequence
 
 
 def plot_base_composition(
-    seq: "DNASequence",
+    seq: DNASequence,
     title: str = "碱基组成",
     save_path: str | Path | None = None,
     show: bool = True,
@@ -73,7 +73,9 @@ def plot_base_composition(
     ax.set_title(title, fontsize=16, fontweight="bold", pad=20)
 
     # 添加图例
-    legend_labels = [f"{base}: {count}" for base, count in zip(bases, values)]
+    legend_labels = [
+        f"{base}: {count}" for base, count in zip(bases, values, strict=False)
+    ]
     ax.legend(
         wedges,
         legend_labels,
@@ -95,7 +97,7 @@ def plot_base_composition(
 
 
 def plot_gc_distribution(
-    records: list["FastaRecord"],
+    records: list[FastaRecord],
     title: str = "GC 含量分布",
     save_path: str | Path | None = None,
     show: bool = True,
@@ -223,7 +225,7 @@ def plot_amino_acid_composition(
     bars = ax.bar(amino_acids, values, color=colors, edgecolor="white")
 
     # 在条形上方添加数值
-    for bar, value in zip(bars, values):
+    for bar, value in zip(bars, values, strict=False):
         if value > 0:
             ax.text(
                 bar.get_x() + bar.get_width() / 2,

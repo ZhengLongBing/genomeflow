@@ -6,19 +6,18 @@
 
 from __future__ import annotations
 
-from collections import Counter
 from pathlib import Path
 from typing import TYPE_CHECKING
 
 import matplotlib.pyplot as plt
 
 if TYPE_CHECKING:
-    from genomeflow.sequence import DNASequence
     from genomeflow.protein import ProteinSequence
+    from genomeflow.sequence import DNASequence
 
 
 def plot_hydrophobicity_profile(
-    protein: "ProteinSequence",
+    protein: ProteinSequence,
     window: int = 9,
     title: str = "疏水性分布",
     save_path: str | Path | None = None,
@@ -124,7 +123,7 @@ def plot_hydrophobicity_profile(
 
 
 def plot_gc_content_window(
-    seq: "DNASequence",
+    seq: DNASequence,
     window: int = 100,
     step: int = 10,
     title: str = "GC 含量分布",

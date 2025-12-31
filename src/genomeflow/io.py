@@ -16,9 +16,9 @@ FASTA 格式是最常见的序列存储格式：
 
 from __future__ import annotations
 
+from collections.abc import Iterator
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterator
 
 from genomeflow.sequence import DNASequence
 

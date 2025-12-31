@@ -9,8 +9,8 @@ from genomeflow.visualization.composition import (
     plot_gc_distribution,
 )
 from genomeflow.visualization.profile import (
-    plot_hydrophobicity_profile,
     plot_gc_content_window,
+    plot_hydrophobicity_profile,
 )
 
 __all__ = [

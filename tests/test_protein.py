@@ -7,10 +7,9 @@ ProteinSequence 类的单元测试。
 import pytest
 
 from genomeflow.protein import (
-    ProteinSequence,
-    InvalidProteinError,
     AMINO_ACIDS,
-    AMINO_ACID_WEIGHTS,
+    InvalidProteinError,
+    ProteinSequence,
 )
 
 

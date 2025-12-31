@@ -77,7 +77,7 @@ def quick(sequence: str) -> None:
     except InvalidSequenceError as e:
         # click.style 可以给输出添加颜色
         click.echo(click.style(f"错误: {e}", fg="red"), err=True)
-        raise SystemExit(1)
+        raise SystemExit(1) from None
 
 
 @cli.command()
@@ -112,7 +112,7 @@ def analyze(file: Path, motif: str | None) -> None:
             gc = gc_content(record.sequence)
             # 根据 GC 含量显示不同颜色
             gc_color = "green" if 0.4 <= gc <= 0.6 else "yellow"
-            click.echo(f"GC 含量: " + click.style(f"{gc:.2%}", fg=gc_color))
+            click.echo("GC 含量: " + click.style(f"{gc:.2%}", fg=gc_color))
 
             # 碱基频率
             freq = base_frequency(record.sequence)
@@ -140,7 +140,7 @@ def analyze(file: Path, motif: str | None) -> None:
 
     except InvalidSequenceError as e:
         click.echo(click.style(f"错误: {e}", fg="red"), err=True)
-        raise SystemExit(1)
+        raise SystemExit(1) from None
 
 
 @cli.command()
@@ -168,7 +168,7 @@ def complement(sequence: str, reverse: bool) -> None:
 
     except InvalidSequenceError as e:
         click.echo(click.style(f"错误: {e}", fg="red"), err=True)
-        raise SystemExit(1)
+        raise SystemExit(1) from None
 
 
 @cli.command()
@@ -193,14 +193,14 @@ def translate(sequence: str) -> None:
 
             protein = ProteinSequence(result.protein.replace("*", ""))
             props = protein.get_properties()
-            click.echo(f"\n蛋白质性质:")
+            click.echo("\n蛋白质性质:")
             click.echo(f"  分子量: {props.molecular_weight:.1f} Da")
             click.echo(f"  等电点: {props.isoelectric_point:.2f}")
             click.echo(f"  GRAVY: {props.gravy:.2f}")
 
     except InvalidSequenceError as e:
         click.echo(click.style(f"错误: {e}", fg="red"), err=True)
-        raise SystemExit(1)
+        raise SystemExit(1) from None
 
 
 # 入口点函数

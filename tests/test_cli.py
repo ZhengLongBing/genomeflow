@@ -4,8 +4,9 @@ CLI 模块的单元测试。
 使用 Click 的测试工具 CliRunner 测试命令行接口。
 """
 
-import pytest
 from pathlib import Path
+
+import pytest
 from click.testing import CliRunner
 
 from genomeflow.cli import cli

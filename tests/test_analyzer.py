@@ -7,11 +7,11 @@ analyzer 模块的单元测试。
 import pytest
 
 from genomeflow.analyzer import (
-    gc_content,
     base_frequency,
-    find_motif,
-    transcribe,
     calculate_molecular_weight,
+    find_motif,
+    gc_content,
+    transcribe,
 )
 from genomeflow.sequence import DNASequence
 

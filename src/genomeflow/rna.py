@@ -13,8 +13,8 @@ from typing import TYPE_CHECKING
 from genomeflow.base import BaseSequence
 
 if TYPE_CHECKING:
-    from genomeflow.sequence import DNASequence
     from genomeflow.protein import ProteinSequence
+    from genomeflow.sequence import DNASequence
 
 
 # 标准遗传密码表
@@ -151,7 +151,7 @@ class RNASequence(BaseSequence):
             "C": "G",
         }
 
-    def reverse_transcribe(self) -> "DNASequence":
+    def reverse_transcribe(self) -> DNASequence:
         """
         将 RNA 反向转录为 DNA。
 
@@ -241,7 +241,7 @@ class RNASequence(BaseSequence):
         self,
         start_codon: bool = True,
         stop_at_stop: bool = True,
-    ) -> "ProteinSequence":
+    ) -> ProteinSequence:
         """
         将 RNA 翻译为蛋白质序列对象。
 

@@ -10,7 +10,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Iterator
+from collections.abc import Iterator
 
 
 class InvalidSequenceError(ValueError):
@@ -105,7 +105,7 @@ class BaseSequence(ABC):
 
     def __eq__(self, other: object) -> bool:
         if isinstance(other, BaseSequence):
-            return type(self) == type(other) and self._sequence == other._sequence
+            return type(self) is type(other) and self._sequence == other._sequence
         if isinstance(other, str):
             return self._sequence == other.upper()
         return NotImplemented

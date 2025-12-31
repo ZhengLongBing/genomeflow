@@ -8,8 +8,8 @@
 from __future__ import annotations
 
 from collections import Counter
+from collections.abc import Iterator
 from dataclasses import dataclass
-from typing import Iterator
 
 
 class InvalidProteinError(ValueError):
@@ -160,7 +160,8 @@ class ProteinSequence:
         invalid_chars = set(normalized) - valid_set
         if invalid_chars:
             raise InvalidProteinError(
-                f"序列包含无效字符: {invalid_chars}。" f"有效氨基酸: {sorted(valid_set)}"
+                f"序列包含无效字符: {invalid_chars}。"
+                f"有效氨基酸: {sorted(valid_set)}"
             )
 
         self._sequence = normalized

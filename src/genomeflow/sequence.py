@@ -44,7 +44,7 @@ class DNASequence(BaseSequence):
             "C": "G",
         }
 
-    def transcribe(self) -> "RNASequence":
+    def transcribe(self) -> RNASequence:
         """
         将 DNA 转录为 RNA。
 

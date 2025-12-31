@@ -18,23 +18,23 @@ GenomeFlow - DNA 序列分析工具包。
     - 序列可视化
 """
 
-from genomeflow.sequence import DNASequence, InvalidSequenceError
-from genomeflow.rna import RNASequence, TranslationResult, CODON_TABLE
+from genomeflow.analyzer import (
+    BaseFrequency,
+    base_frequency,
+    calculate_molecular_weight,
+    find_motif,
+    gc_content,
+    transcribe,
+)
+from genomeflow.io import FastaRecord, read_fasta, write_fasta
 from genomeflow.protein import (
-    ProteinSequence,
+    AminoAcidComposition,
     InvalidProteinError,
     ProteinProperties,
-    AminoAcidComposition,
+    ProteinSequence,
 )
-from genomeflow.analyzer import (
-    gc_content,
-    base_frequency,
-    find_motif,
-    transcribe,
-    calculate_molecular_weight,
-    BaseFrequency,
-)
-from genomeflow.io import read_fasta, write_fasta, FastaRecord
+from genomeflow.rna import CODON_TABLE, RNASequence, TranslationResult
+from genomeflow.sequence import DNASequence, InvalidSequenceError
 
 __version__ = "0.1.0"
 

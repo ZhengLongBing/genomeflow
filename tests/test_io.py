@@ -4,10 +4,11 @@ io 模块的单元测试。
 测试 FASTA 文件的读写功能。
 """
 
-import pytest
 from pathlib import Path
 
-from genomeflow.io import read_fasta, write_fasta, FastaRecord
+import pytest
+
+from genomeflow.io import FastaRecord, read_fasta, write_fasta
 from genomeflow.sequence import DNASequence
 
 
@@ -148,9 +149,9 @@ class TestWriteFasta:
 
         lines = output_file.read_text().strip().split("\n")
         # 应该有 5 行序列（100 / 20 = 5）
-        seq_lines = [l for l in lines if not l.startswith(">")]
+        seq_lines = [line for line in lines if not line.startswith(">")]
         assert len(seq_lines) == 5
-        assert all(len(l) == 20 for l in seq_lines)
+        assert all(len(line) == 20 for line in seq_lines)
 
 
 class TestFastaRoundTrip:
@@ -173,7 +174,7 @@ class TestFastaRoundTrip:
 
         # 验证
         assert len(read_records) == 2
-        for orig, read in zip(original_records, read_records):
+        for orig, read in zip(original_records, read_records, strict=False):
             assert orig.id == read.id
             assert orig.description == read.description
             assert str(orig.sequence) == str(read.sequence)
