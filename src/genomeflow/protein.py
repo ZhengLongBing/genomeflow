@@ -160,8 +160,7 @@ class ProteinSequence:
         invalid_chars = set(normalized) - valid_set
         if invalid_chars:
             raise InvalidProteinError(
-                f"序列包含无效字符: {invalid_chars}。"
-                f"有效氨基酸: {sorted(valid_set)}"
+                f"序列包含无效字符: {invalid_chars}。有效氨基酸: {sorted(valid_set)}"
             )
 
         self._sequence = normalized
@@ -286,9 +285,7 @@ class ProteinSequence:
         for i in range(half_window, len(self._sequence) - half_window):
             window_seq = self._sequence[i - half_window : i + half_window + 1]
             values = [
-                HYDROPHOBICITY.get(aa, 0.0)
-                for aa in window_seq
-                if aa in HYDROPHOBICITY
+                HYDROPHOBICITY.get(aa, 0.0) for aa in window_seq if aa in HYDROPHOBICITY
             ]
             if values:
                 avg = sum(values) / len(values)
@@ -314,9 +311,7 @@ class ProteinSequence:
             -3.5
         """
         values = [
-            HYDROPHOBICITY.get(aa, 0.0)
-            for aa in self._sequence
-            if aa in HYDROPHOBICITY
+            HYDROPHOBICITY.get(aa, 0.0) for aa in self._sequence if aa in HYDROPHOBICITY
         ]
         if not values:
             return 0.0

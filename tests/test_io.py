@@ -126,9 +126,7 @@ class TestWriteFasta:
         """长序列应该按指定宽度换行。"""
         output_file = tmp_path / "output.fasta"
         long_seq = "A" * 100
-        records = [
-            FastaRecord("seq1", "seq1 Long sequence", DNASequence(long_seq))
-        ]
+        records = [FastaRecord("seq1", "seq1 Long sequence", DNASequence(long_seq))]
 
         write_fasta(records, output_file, line_width=60)
 
@@ -141,9 +139,7 @@ class TestWriteFasta:
     def test_custom_line_width(self, tmp_path: Path):
         """自定义行宽。"""
         output_file = tmp_path / "output.fasta"
-        records = [
-            FastaRecord("seq1", "seq1 Test", DNASequence("A" * 100))
-        ]
+        records = [FastaRecord("seq1", "seq1 Test", DNASequence("A" * 100))]
 
         write_fasta(records, output_file, line_width=20)
 

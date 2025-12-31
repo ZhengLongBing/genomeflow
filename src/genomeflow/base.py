@@ -75,7 +75,7 @@ class BaseSequence(ABC):
         invalid_chars = set(sequence) - self.VALID_BASES
         if invalid_chars:
             raise InvalidSequenceError(
-                f"序列包含无效字符: {invalid_chars}。" f"有效字符: {self.VALID_BASES}"
+                f"序列包含无效字符: {invalid_chars}。有效字符: {self.VALID_BASES}"
             )
 
     @property
